@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import cn.utsoft.commons.utanalysis_lib.UTAgent;
 import cn.utsoft.commons.utanalysis_lib.UTAnalysisManager;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,5 +33,24 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG,"设备版本号是：" + UTAnalysisManager.analysisID());
         Log.e(TAG,"设备硬件名称是：" + UTAnalysisManager.analysisHardware());
         Log.e(TAG,"设备CPU是：" + UTAnalysisManager.analysisCPUABI() + "----------------" +Build.CPU_ABI2);
+
+
+        String appkey="a3e557a0ed0311e688cc44a8420bf25c";
+        UTAgent.init(this,"http://md.cobub.com/",appkey);
+
+        UTAgent.setDefaultReportPolicy(this,UTAgent.SendPolicy.POST_NOW);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UTAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        UTAgent.onPause(this);
     }
 }

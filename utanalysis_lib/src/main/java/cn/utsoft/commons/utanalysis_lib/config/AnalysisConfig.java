@@ -6,4 +6,5 @@ package cn.utsoft.commons.utanalysis_lib.config;
  * Desc：描述
  */
 public class AnalysisConfig {
+    public static final String ANALYSIS_TABLE = "ANALYSIS_TABLE"; //数据库表名
 }
